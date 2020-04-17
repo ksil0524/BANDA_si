@@ -1,2 +1,18 @@
-# BANDA_si
-project_BANDA
+# PROJECT BANDA
+
+프로젝트명 : BANDA
+
+개발기간 : 
+
+개발인원 : 
+
+개발환경
+
+프로그램 소개
+
+기획의도
+
+주요기능
+
+본인이 맡은 기능
+
