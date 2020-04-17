@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.mvc.banda.model.vo.AccountVo" alias="accountVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.BoardVo" alias="boardVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.ChatVo" alias="chatVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.CommentVo" alias="commentVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.FeedVo" alias="feedVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.FollowVo" alias="followVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.LikesVo" alias="likesVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.MapVo" alias="mapVo"/>
+		<typeAlias type="com.mvc.banda.model.vo.PetVo" alias="petVo"/>
+	</typeAliases>
+	<!-- resource: src/main/resource와 연결 -->
+	<mappers>
+		<mapper resource="/mybatis/HJ-mapper.xml" />
+		<mapper resource="/mybatis/JH-mapper.xml" />
+		<mapper resource="/mybatis/JI-mapper.xml" />
+		<mapper resource="/mybatis/JY-mapper.xml" />
+		<mapper resource="/mybatis/NK-mapper.xml" />
+		<mapper resource="/mybatis/SI-mapper.xml" />
+		<mapper resource="/mybatis/UJ-mapper.xml" />
+	</mappers>
+</configuration>
+
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	

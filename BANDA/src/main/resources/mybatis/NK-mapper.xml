@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="NK-mapper">
+
+	<resultMap type="boardVo" id="boardMap">
+		<result property="board_no" column="BOARD_NO"/>
+		<result property="id" column="ID"/>
+		<result property="board_title" column="BOARD_TITLE"/>
+		<result property="board_content" column="BOARD_CONTENT"/>
+		<result property="board_regdate" column="BOARD_REGDATE"/>
+		<result property="board_nyn" column="BOARD_NYN"/>
+		<result property="board_file" column="BOARD_FILE"/>
+		<result property="board_hash" column="BOARD_HASH"/>
+		<result property="board_view" column="BOARD_VIEW"/>
+	</resultMap>
+	
+	<!-- 무료나눔 공지 selectList -->
+	<select id="selectListShNotice" resultType="boardVo">
+		SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW  
+		FROM BOARD
+		WHERE BOARD_CATE='SH' AND BOARD_NYN='Y'
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<!-- 물물교환 공지 selectList -->
+	<select id="selectListExNotice" resultType="boardVo">
+		SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW 
+		FROM BOARD
+		WHERE BOARD_CATE='EX' AND BOARD_NYN='Y'
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- selectOne -->	
+	<select id="selectOneBoard" parameterType="int" resultType="boardVo">
+		SELECT BOARD_NO, BOARD_CATE, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_NYN, BOARD_FILE, BOARD_HASH, BOARD_VIEW 
+		FROM BOARD
+		WHERE BOARD_NO=#{board_no}
+	</select>
+
+	<!-- 마지막 게시글 시퀀스 가져오기 -->
+	<select id="getLastBoardSeq" resultType="int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'BOARD_SEQ'
+	</select>
+	
+	<!-- 게시글을 공지로 등록하는 update -->
+	<update id="updateBoardToNotice" parameterType="int" >
+		UPDATE BOARD SET BOARD_NYN='Y' 
+		WHERE BOARD_NYN='N' AND BOARD_NO=#{board_no}
+	</update>
+
+	<!-- 공지글을 일반 게시글로 내리는 update -->
+	<update id="updateNoticeToBoard" parameterType="int" >
+		UPDATE BOARD SET BOARD_NYN='N' 
+		WHERE BOARD_NYN='Y' AND BOARD_NO=#{board_no}
+	</update>
+	
+	<!-- 게시글 작성 -->
+	<insert id="insertBoard" parameterType="boardVo">
+		INSERT INTO BOARD(BOARD_NO, BOARD_CATE, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_NYN, BOARD_FILE, BOARD_HASH) 
+		VALUES(BOARD_SEQ.NEXTVAL, #{board_cate}, #{id}, #{board_title}, #{board_content}, SYSDATE, 'N', ' ', #{board_hash})
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="boardVo">
+		UPDATE BOARD
+		SET BOARD_TITLE=#{board_title}, BOARD_CONTENT=#{board_content}, BOARD_HASH=#{board_hash}
+		WHERE BOARD_NO=#{board_no}
+	</update>
+	
+	<!-- 게시글 삭제-->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM BOARD
+		WHERE BOARD_NO=#{board_no}
+	</delete>
+	
+	<!-- 게시글 조회수 -->
+	<update id="boardViewCnt" parameterType="int">
+		UPDATE BOARD
+		SET BOARD_VIEW = BOARD_VIEW + 1
+		WHERE BOARD_NO=#{board_no}
+	</update>
+	
+	<!-- 댓글 목록 -->
+	<select id="selectBoardCom" parameterType="int" resultType="commentVo">
+		SELECT * 
+		FROM COMMENTS
+		WHERE COM_PNO=#{com_pno}
+		ORDER BY COM_REGDATE 
+	</select>
+
+	<!-- 댓글 작성 -->
+	<insert id="insertBoardCom" parameterType="commentVo">
+		INSERT INTO COMMENTS
+		VALUES(COM_SEQ.NEXTVAL, #{com_cate}, #{id}, #{com_content}, SYSDATE, #{com_pno})
+	</insert>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateBoardCom" parameterType="commentVo">
+		UPDATE COMMENTS
+		SET COM_CONTENT=#{com_content}
+		WHERE COM_NO=#{com_no}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteBoardCom" parameterType="int">
+		DELETE FROM COMMENTS
+		WHERE COM_NO=#{com_no}
+	</delete>
+
+
+	<!-- 페이징 - 무나 -->
+	<select id="pagingListSh" resultType="boardVo" parameterType="com.mvc.banda.common.SearchCriteria">	
+		SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW 
+		 FROM ( 
+		        SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW,  
+		               ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) AS RNUM
+		         FROM BOARD 
+		         WHERE 1=1 AND BOARD_CATE='SH' AND BOARD_NYN='N'
+		         	<include refid="boardSearch"/>
+		                       ) B
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="listCountSh" resultType="int" parameterType="com.mvc.banda.common.SearchCriteria">
+		SELECT COUNT(BOARD_NO)
+		 FROM BOARD
+		 WHERE 1=1 AND BOARD_CATE='SH' AND BOARD_NYN='N' 
+		 <include refid="boardSearch"/>
+		 AND BOARD_NO > 0
+	</select>
+	
+	<!-- 페이징 - 교환 -->
+	<select id="pagingListEx" resultType="boardVo" parameterType="com.mvc.banda.common.SearchCriteria">	
+		SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW 
+		 FROM ( 
+		        SELECT BOARD_NO, ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGDATE, BOARD_FILE, BOARD_HASH, BOARD_VIEW, 
+		               ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) AS RNUM
+		         FROM BOARD 
+		         WHERE 1=1 AND BOARD_CATE='EX' AND BOARD_NYN='N'
+		         	<include refid="boardSearch"/>
+		                       ) B
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="listCountEx" resultType="int" parameterType="com.mvc.banda.common.SearchCriteria">
+		SELECT COUNT(BOARD_NO)
+		 FROM BOARD
+		 WHERE 1=1 AND BOARD_CATE='EX' AND BOARD_NYN='N' 
+		 <include refid="boardSearch"/>
+		 AND BOARD_NO > 0
+	</select>
+	
+	<!-- 검색 -->
+	<sql id="boardSearch">
+		<if test="searchType != null">
+			<if test="searchType == 'title'.toString()">AND BOARD_TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'content'.toString()">AND BOARD_CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'writer'.toString()">AND ID LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tag'.toString()">AND BOARD_HASH LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

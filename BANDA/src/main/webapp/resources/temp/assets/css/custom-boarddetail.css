@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+.container {
+	width: auto;
+}
+
+div.m-0 {
+	padding-top:10px;
+}
+
+.col-lg-6-1 {
+	display: table;
+	width: 50%;
+	height: 50%;
+	float: center;
+}
+
+.detail-view {
+	color: #88898a;
+	position: absolute; 
+	top: 70px; 
+	right: 35px;
+}
+
+.detail-title {
+	font-weight: 700 !important;
+	font-size: 20px;
+	color: #848484;
+}
+
+.cardbox-text {
+	font-size: 17px;
+}
+
+.boardtag {
+	display: inline-block;
+	padding-left: 7px;
+	padding-right: 7px;
+  	text-align: center;
+	border-radius: 4px;
+	background-color: #A4A4A4;
+}
+
+.boardtag:hover {
+	background-color: gray;
+}
+
+.tagtext {
+	color: #fff !important;
+	font-size: 0.9em;
+}
+
+.cardbox-img {
+	display: flex; justify-content: center;
+}
+
+.cardbox-content {
+	margin-top: 20px; margin-bottom: 20px; padding-left: 5%; padding-right: 5%;
+}
+
+.cardbox-text {
+	margin-bottom: 10px;
+}
+
+.cardbox-comment-count {
+	padding-left: 15px;
+}
+
+.cardbox-comment-count span {
+	float: left;
+	color: #ff7f73;
+	font-size: 18px;
+}
+
+.cardbox-comment-count span.span-last {
+	color: #b2b2b2;
+	padding-left:5px;
+}
+
+.cardbox-comment-list {
+	padding: 30px 10px 0px 10px;
+}
+
+.comment-bottom {
+	padding: 0px 30px 30px 30px; 
+	margin-bottom: 30px;
+}
+
+.comment-put, .comment-edit {
+	display: flex; 
+	justify-content: center;
+}
+
+.comment-put img {
+	width: 25px; height:25px;
+}
+
+.comment-put i {
+	color: #a4a4a4 !important;
+}
+
+.comment-put i:hover {
+	color: #ff7f73 !important;
+	cursor: pointer;
+}
+
+.comment-text i:hover {
+	color: #a4a4a4 !important;
+}
+
+.comment-text i:hover {
+	color: #05cb95 !important;
+	cursor: pointer;
+}
+
+.comment-edit-del i {
+	color: gray;
+}
+
+.comment-edit-del i:hover {
+	color: #ff7f73 !important;
+	cursor: pointer;
+}
+
+.comment-edit i:hover {
+	color: #ff7f73 !important;
+	cursor: pointer;
+}
+
+.list-btn {
+	position: relative;
+	padding: 30px 0px;
+}
+
+.list-btn button {
+	background: #ff7f73 !important;
+}
+
+.list-btn button:hover {
+	background: gray !important;
+}
+
+table, tbody, tr {
+	background-color: transpert; 
+	border: none;
+}
+
+.img-comment-list {
+	height: auto !important;
+}
+
+/* 글 수정, 삭제 버튼*/
+.dropdown-item:hover {
+	color: #ff7f73 !important;
+}
+  
+/* Scrollbar styles */        
+/* Hide scrollbar for Chrome, Safari and Opera */
+.img-comment-list::-webkit-scrollbar {
+	display: none;
+}
+/* Hide scrollbar for IE and Edge */
+.img-comment-list {
+	-ms-overflow-style: none;
+}

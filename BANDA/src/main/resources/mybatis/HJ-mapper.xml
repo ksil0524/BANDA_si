@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="HJ-mapper">
+
+	<!-- Map 자동검색  -->
+	<select id="autocompleteSelect" parameterType="string" resultType="string">
+		
+		SELECT MAP_NAME 
+		FROM MAPS
+		WHERE MAP_CATE=#{mapcate} 
+		AND MAP_NAME LIKE '%'||#{keyword}||'%'
+		<![CDATA[AND ROWNUM <= 5]]>
+	</select>
+	
+	<select id="defaultLocationSelect" parameterType="hashmap" resultType="mapVo">
+		SELECT *
+		FROM MAPS
+		WHERE MAP_CATE=#{mapcate} 
+		AND MAP_ADDR LIKE '%'||#{dong}||'%'
+	</select>
+	
+	<select id="searchLocationSelect" parameterType="hashmap" resultType="mapVo">
+		<if test="city!=null and district!=null and neighborhood!=null and keyword!=null">
+			SELECT * 
+			FROM MAPS 
+			WHERE MAP_CATE=#{mapcate} 
+			AND MAP_ADDR LIKE '%'||#{addr}||'%' 
+			AND MAP_NAME LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="city!=null and district!=null and neighborhood!=null and keyword==null">
+			SELECT * 
+			FROM MAPS 
+			WHERE MAP_CATE=#{mapcate} 
+			AND MAP_ADDR LIKE '%'||#{addr}||'%' 
+		</if>
+	</select>
+	
+	<!-- Header 자동검색 -->
+	<select id="circleheader_autocompleteSelect" parameterType="hashmap" resultType="string">
+			<if test="searchtype.equals('jh_searchid')">
+				SELECT ID 
+				FROM ACCOUNT
+				WHERE ID LIKE '%'||#{keyword}||'%'
+				<![CDATA[AND ROWNUM <= 5]]>		
+			</if>
+			<if test="searchtype.equals('jh_searchfeedptag')">
+				SELECT DISTINCT FEED_PTAG 
+				FROM FEED
+				WHERE FEED_PTAG LIKE '%'||#{keyword}||'%'
+				<![CDATA[AND ROWNUM <= 5]]>		
+			</if>
+			<if test="searchtype.equals('jh_searchfeedhtag')">
+				SELECT DISTINCT FEED_HTAG 
+				FROM FEED
+				WHERE FEED_HTAG LIKE '%'||#{keyword}||'%'
+			</if>
+	</select>
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UJ-mapper">
+
+
+	<resultMap type = "followVo" id = "followVo" >
+		<result property="fr_id" column="FR_ID" />
+		<result property="fd_id" column="FD_ID" />
+	</resultMap>
+	
+	<resultMap type = "feedVo" id = "feedVo" >
+		<result property="feed_no" column="FEED_NO" />
+		<result property="id" column="ID" />
+		<result property="feed_content" column="FEED_CONTENT" />
+		<result property="feed_ptag" column="FEED_PTAG" />
+		<result property="feed_hteg" column="FEED_HTAG" />
+		<result property="feed_regdate" column="FEED_REGDATE" />
+		<result property="feed_file" column="FEED_FILE" />
+	</resultMap>
+
+
+
+
+	<select id = "login" resultType="accountVo" parameterType="accountVo">
+		SELECT * 
+		FROM ACCOUNT 
+		WHERE ID= #{id} 
+	</select>
+	
+	
+	<insert id="register" parameterType="accountVo">
+	INSERT INTO ACCOUNT
+	VALUES(ACCOUNTSEQ.NEXTVAL,#{email},#{id},#{password},#{phone})
+	
+	</insert>
+	
+	<select id = "uj_selectList" resultMap="followVo" parameterType="String">
+		SELECT * FROM FOLLOW WHERE FR_ID = #{id}
+	</select>
+	
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

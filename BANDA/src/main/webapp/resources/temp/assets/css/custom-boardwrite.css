@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+/*-------------------------------------------------------*/
+/*글쓰기---------------------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+.btns {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/*
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 50px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+*/
+
+.btns input, button {
+  background-color: #ff7f73;
+  color: white;
+  margin: 5px;
+  padding: 0px 30px 10px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.btns input:hover {
+  background-color: gray;
+}
+
+.board-form {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, .btns input {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+
+.custom-file-input{
+	padding-top: 7px;
+}
+
+/*-------------------------------------------------------*/
+/*해시태그--------------------------------------------------*/
+.tags-input-wrapper {
+	background: #f9f9f9;
+	padding: 10px;
+	border-radius: 4px;
+ 	border: 1px solid #ccc
+}
+
+.tags-input-wrapper input {
+	border: none;
+	background: transparent;
+	outline: none;
+	width: 150px;
+}
+
+.tags-input-wrapper .tag {
+	display: inline-block;
+	background-color: #a4a4a4;
+	color: white;
+	font-size: 16px;
+	border-radius: 4px;
+	padding: 0px 3px 0px 7px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.tags-input-wrapper .tag a {
+	margin: 0 7px 3px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.write-tag-del a {
+	font-size: 16px; 
+	color: white; 
+	content: "×"; 
+	font-style: normal;
+}
+/*-------------------------------------------------------*/

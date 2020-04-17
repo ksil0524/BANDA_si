@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/********************************
+	main index의 circle 조정 CSS 
+*********************************/
+
+/*button 설정*/
+#login-email, #login-password, #findid_res, #findid, #findpwd_id, #findpwd_email, #join-loginBtn{
+    background-color: rgba(0, 0, 0, 0.09) !important;
+    font-family: 'BMHANNAAir' !important;
+} 
+
+/*button 설정*/
+#login-email:hover, #login-password:hover, #findid_res:hover, #findid:hover, #findpwd_id:hover, #findpwd_email:hover, #join-loginBtn:hover {
+    background-color: rgba(0, 0, 0, .16) !important;
+} 
+
+.form input[type="text"], .form input[type="password"] {
+	font-size: 14px !important;
+}
+
+#idFind, #pwdFind{
+	font-size: 12px !important;
+	font-family: 'BMHANNAAir' !important;
+	text-decoration:none !important;
+}
+
+
+#idFind:hover, #pwdFind:hover{
+    color:#ff7f73 !important;
+}
+
+/*input 설정*/
+#login-loginBtn, #joinBtn, #idFindChk_res_id, #return_login_id, #idFindChk_res_pwd, #join-loginBtn, #joinForm input{
+	background-color: #e8e8e8 !important;
+	font-family: 'BMHANNAAir' !important;
+    font-size: 13px;
+    font-weight: 540;
+}
+
+/*input 설정*/
+#login-loginBtn:hover, #joinBtn:hover, #idFindChk_res_id:hover, #return_login_id:hover, #idFindChk_res_pwd:hover, #joinForm > input:hover{
+	background-color: #ccc !important;
+	
+}
+
+#findpwd_id, #findpwd_email {
+	font-family: 'BMHANNAAir' !important;
+    font-size: 13px;
+}
+
+#findpwd_email {
+	border: 0px;
+	height: 46px;
+}
+
+#idFindChk_res_id, #return_login_id, #idFindChk_res_pwd{
+	margin-top: 20px;
+}
+
+#idfind{
+	margin-top: 0px;
+}
+

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* ---------- PAGE --------- */
+ul.pagination {
+	display: table; <!-- inline-block; -->
+	padding: 0;
+	margin: 0;
+	margin-left: auto;
+    margin-right: auto;
+}
+		
+ul.pagination li {display: inline;}
+		
+ul.pagination li a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	border-radius: 5px;
+}
+		
+ul.pagination li a.active {
+	background-color: #A4A4A4;
+	color: white;
+	border-radius: 5px;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}

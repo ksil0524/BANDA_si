@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+.frnds {
+    float: left;
+    width: 100%;
+}
+
+
+.nearby-contct li:hover{
+    box-shadow: 0 8px 8px #e1e8ec;
+    border-color: transparent;
+}
+
+.frnds .frnds-nav .frnds-nav-tabs {
+    border: medium none;
+}
+
+/* .frnds .frnds-nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 30px;
+} */
+
+.frnds .frnds-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.frnds dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.frnds ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* padding-inline-start: 40px; */
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item {
+    margin-right: 50px;
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item {
+    margin-bottom: -1px;
+}
+
+.frnds li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item:last-child {
+    margin-right: 0;
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item a.active {
+    border-bottom: 1px solid;
+        color: #088dcd !important;
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item a {
+    font-family: 'Abhaya Libre', serif;
+    font-size: 20px;
+    color: #88898a;
+    font-weight: 700;
+    line-height: 0;
+}
+
+
+.frnds a, .frnds a:hover, .frnds a:focus, .frnds a:active {
+    color: inherit;
+    outline: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    text-decoration: none;
+}
+
+a.add-butn:hover{
+	    color: white !important;
+}
+
+.add-butn:hover{
+	    color: white !important;
+}
+
+.frnds .frnds-nav-tabs .frnds-nav-item > span {
+    border: 1px solid #ccc;
+    border-radius: 30%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: initial;
+    margin-left: 5px;
+    text-align: center;
+    width: 25px;
+    color: #8d8d8d;
+}
+
+.frnds-fade.frnds-show {
+    opacity: 1;
+}
+
+.frnds-fade {
+    opacity: 0;
+    transition: opacity .15s linear;
+}
+
+.nearby-contct {
+    display: inline-block !important;
+    list-style: outside none none !important;
+    margin-bottom: 0;
+    margin-top: 35px;
+    padding-left: 0;
+    width: 100%;
+}
+
+.nearby-contct > li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #eaf1f6;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    transition: all 0.15s linear 0s;
+}
+
+.nearly-pepls {
+    display: inline-block;
+    width: 100%;
+}
+
+.nearly-pepls > figure {
+    display: inline-block;
+    margin-bottom: 0;
+    max-width: 60px;
+    min-width: 60px;
+    vertical-align: middle;
+    width: 60px;
+}
+
+figure {
+    margin: 0 0 1rem;
+}
+
+#people-list figure img, .new-postbox > figure img, .friend-info > figure img, .comet-avatar > img, .followers > li figure img, .invition figure img, .nearly-pepls > figure img, .peoples > li figure img, .conversation-head > figure img, .peoples-mesg-box > ul li > figure img, .your-page > figure img, .notification-box > ul li figure img {
+    border-radius: 100%;
+}
+
+
+.pepl-info {
+    display: inline-block;
+    padding-left: 15px;
+    position: relative;
+    vertical-align: middle;
+    width: 94%;
+}
+
+.pepl-info > h4 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.pepl-info > span{
+   color: #088dcd;
+}
+
+.pepl-info > span {
+    float: left;
+    font-size: 13px;
+    text-transform: capitalize;
+    width: 100%;
+    line-height: initial;
+}
+
+#frends a.add-butn.more-action {
+    right: 89px;
+}
+
+a.add-butn.more-action {
+    background: lightslategray none repeat scroll 0 0;
+    right: 74px;
+}
+
+a.add-butn {
+    color: white !important;
+    float: right;
+    font-size: 13px;
+    line-height: initial;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    text-transform: capitalize;
+    top: 10px;
+    border-radius: 4px;
+        background: #088dcd;
+}
+
+
+.lodmore {
+    display: inline-block;
+    width: 100%;
+
+}
+
+#loadBtn{
+    font-size: 20px;
+    margin-bottom: 40px; 
+    padding: 0px;
+}
+
+#loadBtn:hover{
+    background: #ff7f73;
+}
+
+.fas.fa-redo-alt{
+    background: #f1f1f1;
+    border: medium none;
+    border-radius: 100%;
+    color: transparent;
+    display: block;
+    height: 50px;
+    margin: 30px auto 0;
+    position: relative;
+    width: 50px;
+    transition: all 0.2s linear 0s;
+    z-index: 77;
+	-ms-box-shadow: 0px 5px 10px rgba(0,0,0,.2);
+	-moz-box-shadow: 0px 5px 10px rgba(0,0,0,.2);
+	-o-box-shadow: 0px 5px 10px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0px 5px 10px rgba(0,0,0,.2);
+	box-shadow: 0px 5px 10px rgba(0,0,0,.2);
+}
+
+.fas.fa-redo-alt::before {
+    color: #333;
+
+    left: 50%;
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: 111;
+    transition: all 0.2s linear 0s;
+}
+
+.fas.fa-redo-alt:hover::before {
+    color: #fff;
+    transform: translate(-50%, -50%) rotate(360deg);
+}
+
+#header .inner{
+	width: 43.3em;
+    height: 43.3em;
+	
+}
+
+.modal, .modal-open{
+	padding-right: 0px !important;
+}
+
+
+#followersNum{
+	margin-right: 50px;
+}
+
+#FollowersTab, #FollowingTab{
+	font-size: 20px;
+}
+
+
+#FollowersTab span, #FollowingTab span{
+	    padding: 6px !important;
+	    margin-left: 10px;
+	    
+}
+
+#follwList{
+	padding: 10px 0px !important;
+}

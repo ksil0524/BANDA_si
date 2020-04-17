@@ -1,0 +1,418 @@
+
+.details {
+    background: #f4f4f4;
+    padding: 0px;
+}
+
+#backimgfile{
+	width:100%;
+	height:138px;
+	background-image: url( '../../images/detailsboxbg.jpg' );
+	background-repeat: no-repeat;
+	padding-left: 15px;
+}
+
+#detail-bg-box, #map-container{
+	padding: 0px;
+}
+
+#detail-bg-box{
+	margin-bottom: 38px;
+}
+
+#city_selbox, #dist_selbox {
+	/* width: 230px; */
+	width: 100%;
+	padding: .8em 1.5em;
+	border: 1px solid #999 !important;
+	font-family: inherit;
+	background: url('../../images/arrow.jpg') no-repeat 95% 50%;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: white;
+    height: 60px;
+    margin: 39px 0px 0px 5px;
+    border-radius: 60px;
+}
+
+#city_selbox::-ms-expand,#dist_selbox::-ms-expand  {
+    display: none;
+}
+
+#city_selbox:focus, #dist_selbox:focus,#searchInput:focus, #topSearchBtn:focus {outline:none;}
+
+#topSearchBtn{
+	border: 1px solid #999;
+    border-radius: 60px;
+    background: #fff;
+    width: 120px;
+    height: 60px;
+    text-align: center;
+    padding: 0px;
+    padding: .8em 1.5em;
+    margin: 39px 0px 0px 5px;
+    
+}
+
+#searchIcon{
+	margin-left: 10px;
+}
+
+/* #cateOne{
+	margin-left: 60px;
+} */
+
+#searchInput{
+	border: 1px solid #999;
+    border-radius: 60px;
+    background: #fff;
+    width: 230px;
+    width: 100%;
+    height: 60px;
+    padding: 0px;
+    padding: .8em 1.5em;
+	margin: 39px 0px 0px 5px;
+	appearance: none;
+}
+
+#details{
+	padding: 0px !important;
+}
+
+#maplist{
+	padding: 15px 0px 126px !important;
+}
+
+@media screen and (max-width: 1280px) {
+
+	#left-container {
+		padding:0px !important;
+	}
+	.nec-sec{
+		margin-top: 15px;
+	    height: 60px;
+    }
+    
+	#searchBox{
+		width: 100% !important;
+		padding: 10px;
+	}
+	#searchInput, #city_selbox, #dist_selbox {
+		margin: 39px 0px 0px 0px;
+	}
+	
+	#backimgfile{
+		padding-left: 0px;
+		background-position-x: right;
+	    background-position-y: bottom;
+	    background-color: #FFFCF1;
+	    height: 100%;
+    	padding-bottom: 50px;
+	}
+	
+
+	
+}
+
+
+@media screen and (max-width: 1279px) {
+	.select-items {
+		width: 260px !important;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.select-items {
+		width: 945px !important;
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.select-items {
+		width: 725px !important;
+	}
+}
+
+@media screen and (max-width: 770px) {
+	.select-items {
+		width: 724px !important;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.select-items {
+		width: 624px !important;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.select-items {
+		width: 590px !important;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.select-items {
+		width: 537px !important;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.select-items {
+		width: 510px !important;
+	}
+}
+
+
+
+@media screen and (max-width: 500px) {
+	.select-items {
+		width: 458px !important;
+	}
+}
+
+
+@media (max-width: 768px){
+	.nav-icon-lg {
+		height: 59px !important;
+	}
+    	
+	#searchBox{
+		width: 100% !important;
+		padding: 10px;
+	}
+	
+	#searchInput, #city_selbox, #dist_selbox{
+		margin: 39px 0px 0px 0px;
+	}
+	
+	#backimgfile{
+		padding-left: 0px;
+		background-position-x: right;
+	    background-position-y: bottom;
+	    background-color: #FFFCF1;
+	    height: 100%;
+    	padding-bottom: 50px;
+	}
+
+
+
+}
+
+#searchCon{
+	padding: 0px !important;
+	
+	
+}
+
+#mapform{
+	background: #fff;
+	padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+#map{
+	width:100%;
+	height:350px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  
+}
+
+.custom-select select, .custom-select2 select, .custom-select3 select {
+  display: none; 
+}
+
+.select-selected {
+  /* background-color: DodgerBlue; */
+  background-color: white;
+      border-radius: 20px;
+      font-family: 'BMHANNAAir' !important;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  /* top: 14px;
+  right: 10px; */
+  top: 67px !important;
+  right: 33px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #000 transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+/*   border-color: transparent transparent #fff transparent; */
+  border-color: transparent transparent #000 transparent;
+  /* top: 7px; */
+  top: 59px !important;
+}
+
+.select-items div{
+  /* color: #ffffff; */
+  color: #000;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 60px;
+  
+}
+
+.select-selected {
+  /* color: #ffffff; */
+  color: #333;
+  /* padding: 8px 16px; */
+  padding: 20px 14px 20px 14px;
+  /* border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; */
+  cursor: pointer;
+  user-select: none;
+  border-radius: 60px;
+  height: 60px;
+  margin: 39px 0px 0px 5px;
+  border: 1px solid #999
+}
+
+.select-items {
+  position: absolute;
+  /* background-color: DodgerBlue; */
+  background-color: white;
+  top: 100%;
+  /* left: 0; */
+  left: 19px;
+  right: 0;
+  z-index: 99;
+  border-radius: 20px;
+  margin-top: 5px;
+  width: 237.5px;
+  border: 1px solid #999;
+  height: 250px;
+  /*overflow: auto; */
+  overflow-y: scroll;
+  font-family: 'BMHANNAAir' !important;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+
+
+/* Scroller */
+
+#style-1::-webkit-scrollbar-track
+{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	border-radius: 10px;
+	background-color: #f5f5f500;
+	
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #f5f5f500;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	background-color: #555;
+}
+
+::-webkit-scrollbar-button:start:decrement, #style-1::-webkit-scrollbar-button:end:increment{
+	display: block; width: 12px;height: 20px; background: #f5f5f500;
+
+}
+
+
+/*page custom*/
+#cateOne, #cateTwo, #cateThree{
+	text-align: left;
+}
+
+#mapCon{
+	position: relative; 
+	padding: 60px 15px 15px 15px;
+}
+#mapDiv{
+	margin-top:-18px; 
+	background: #ff7f73; 
+	width:62px; 
+	height:65px;
+	position: absolute; 
+	top: 0px; 
+	left:15px; 
+	right: 0px; 
+	z-index: 10;
+	text-align: center; 
+	padding: 15px; 
+	border-radius: 7px;
+}
+
+.fa-map-marker-alt{
+	color: white;font-size: 32px;
+}
+#listCon{
+	background: rgba(255,255,255,.15); 
+	padding: 0px;
+}
+
+#listDiv {
+	height: 100px;
+	border: 0px solid red;
+	border-radius: 10px;
+	background: white;
+	padding: 20px;
+	margin-bottom: 15px;
+}
+
+#listDiv h3{
+	margin: 0px 0px 12px 0px;
+}
+
+.nodatalistDiv{
+	size: 15px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 40px !important;
+}
+
+.update-menu a:hover,.update-menu a:focus, .update-menu a:active, .update-menu a.active {
+	color: white !important;
+	cursor: default;
+}	
+	

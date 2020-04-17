@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+/********************************************
+	main index외 모든 페이지에 적용되는 circle 조정 CSS 
+*********************************************/
+
+/*button 설정*/
+#login-email, #findid_res, #findid, #findpwd_id, #findpwd_email {
+    background-color: rgba(0, 0, 0, 0.09) !important;
+    font-family: 'BMHANNAAir' !important;
+} 
+
+#login-password{
+	background-color: rgba(0, 0, 0, 0.09) !important;
+}
+
+#login-password::placeholder{
+	font-family: 'BMHANNAAir' !important;
+}
+
+
+/*button 설정*/
+#login-email:hover, #login-password:hover, #findid_res:hover, #findid:hover, #findpwd_id:hover, #findpwd_email:hover {
+    background-color: rgba(0, 0, 0, .16) !important;
+} 
+
+/*input 설정*/
+#login-loginBtn, #joinBtn, #idFindChk_res_id, #return_login_id, #idFindChk_res_pwd, #joinForm input, #return_login_pwd{
+	background-color: #e8e8e8 !important;
+	font-family: 'BMHANNAAir' !important;
+}
+
+/*input 설정*/
+#login-loginBtn:hover, #joinBtn:hover, #idFindChk_res_id:hover, #return_login_id:hover, #idFindChk_res_pwd:hover, #joinForm > input:hover, #return_login_pwd:hover{
+	background-color: #ccc !important;
+	
+}
+
+#google_login, #facebook_login{
+	width: 48px;
+    height: 46px;
+}
+#google_login:hover, #facebook_login:hover{
+	color: white !important;
+}
+
+.fa-google-plus, .fa-facebook{
+	vertical-align: middle;
+}
+
+#findpwd_id, #findpwd_email {
+	font-family: 'BMHANNAAir' !important;
+    font-size: 13px;
+}
+
+#findpwd_email {
+	border: 0px;
+	height: 46px;
+}
+
+#idFindChk_res_id, #return_login_id, #idFindChk_res_pwd{
+	margin-top: 20px;
+}
+
+.form input[type="password"] {
+	font-family: 'noto-sans' !important;
+}

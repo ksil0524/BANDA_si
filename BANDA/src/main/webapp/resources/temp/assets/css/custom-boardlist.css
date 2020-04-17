@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.button-menu {
+	background-color: #f4f4f4;
+	padding-top:20px;
+}
+
+.button-menu .container {
+	padding: 30px;
+}
+
+#searchinputBox {
+	position: relative;
+}
+
+#searchType {
+	display: inline-block !important;
+	width:100px !important; 
+	margin-right: 0px !important;
+	background: #fffefe !important;
+}
+
+#searchKeyword {
+	display: inline-block !important;
+	width: 362px !important;
+	background: #fffefe !important;
+}
+
+input[id=searchinput] {
+	margin-right: 5px !important;
+}
+
+.explore-top i {
+	color: #e16a70;
+}
+
+.story-body {
+	position: relative; 
+	top:200px;
+}
+
+thead th {
+	padding-top: 0.75em !important;
+    text-align: center !important;
+}
+
+.td_notice, .td_date, .td_view {
+	text-align: center !important;
+}
+
+.td_notice {
+	font-weight: 700;
+}
+
+.td_title a {
+	color: #333333;
+	text-decoration: none;
+}
+
+.td_title a:hover, .td_title a:focus, .td_title a:active {
+	color: #ff7f73 !important;
+}
+
+.board-write-btn {
+	background: #ff7f73 !important;
+	color: #ffffff !important;
+	font-size: 14px;
+    padding: 4px;
+}
+	   	
+.board-write-btn:hover {
+	background: gray !important;
+	color: #fff !important;
+	text-decoration: none;
+}
+
+/* 페이징 */
+.pagination a:hover, .pagination a:focus, .pagination a:active {
+	color: #ff7f73 !important;
+}

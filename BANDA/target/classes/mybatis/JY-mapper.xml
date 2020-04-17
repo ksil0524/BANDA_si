@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="JY-mapper">
+
+	<!-- follow vo -->
+	<resultMap type = "followVo" id = "followVo" >
+		<result property="fr_id" column="FR_ID" />
+		<result property="fd_id" column="FD_ID" />
+	</resultMap>
+	
+	<!-- feed vo -->
+	<resultMap type = "feedVo" id = "feedVo" >
+		<result property="feed_no" column="FEED_NO" />
+		<result property="id" column="ID" />
+		<result property="feed_content" column="FEED_CONTENT" />
+		<result property="feed_ptag" column="FEED_PTAG" />
+		<result property="feed_hteg" column="FEED_HTAG" />
+		<result property="feed_regdate" column="FEED_REGDATE" />
+		<result property="feed_file" column="FEED_FILE" />
+	</resultMap>
+	
+	<!-- comment -->
+	<resultMap type = "commentVo" id = "commentVo" >
+		<result property="com_no" column="COM_NO" />
+		<result property="com_cate" column="COM_CATE" />
+		<result property="id" column="ID" />
+		<result property="com_content" column="COM_CONTENT" />
+		<result property="com_regdate" column="COM_REGDATE" />
+		<result property="com_pno" column="COM_PNO" />
+	</resultMap>
+	
+	<!-- like -->
+	<resultMap type = "likesVo" id = "likesVo" >
+		<result property="feed_no" column="FEED_NO" />
+		<result property="id" column="ID" />
+	</resultMap>
+	
+	<!-- pet -->
+	<resultMap type = "petVo" id = "petVo" >
+		<result property="p_no" column="P_NO" />
+		<result property="class_no" column="CLASS_NO" />
+		<result property="species_no" column="SPECIES_NO" />
+		<result property="id" column="ID" />
+		<result property="p_Name" column="P_NAME" />
+		<result property="p_kind" column="P_KIND" />
+		<result property="p_birth" column="P_BRITH" />
+		<result property="p_character" column="P_CHARACTER" />
+		<result property="p_like" column="P_LIKE" />
+		<result property="p_hate" column="P_HATE" />
+		<result property="p_about" column="P_ABOUT" />
+	</resultMap>
+	
+	<resultMap type="boardVo" id="boardVo">
+		<result property="board_no" column="BOARD_NO"/>
+		<result property="board_cate" column="BAORD_CATE"/>
+		<result property="id" column="ID"/>
+		<result property="board_title" column="BOARD_TITLE"/>
+		<result property="board_content" column="BOARD_CONTENT"/>
+		<result property="board_regdate" column="BOARD_REGDATE"/>
+		<result property="board_nyn" column="BOARD_NYN"/>
+		<result property="board_file" column="BOARD_FILE"/>
+		<result property="board_hash" column="BOARD_HASH"/>
+	</resultMap>
+
+	<!-- login -->
+	<select id = "jy_login" resultType="accountVo" parameterType="accountVo">
+		SELECT * FROM ACCOUNT WHERE ID=#{id}
+	</select>
+	
+	<!-- naver_register -->
+	<insert id = "naver_register" parameterType="accountVo">
+		INSERT INTO ACCOUNT VALUES(#{id}, #{password}, #{email}, #{phone})
+	</insert>
+	
+	<!-- follow list -->
+	<select id = "main_selectList" resultMap="followVo" parameterType="String">
+		SELECT * FROM FOLLOW WHERE FR_ID = #{id}
+	</select>
+	
+	<!-- feed list - follow -->
+	<select id = "main_selectList_feed" resultMap="feedVo"  parameterType="java.util.HashMap">
+	
+		SELECT  ROWNUM, F.* FROM (SELECT * FROM FEED WHERE ID IN
+	
+		<foreach item = "item" index = "index" collection = "name" open = "(" close = ")" separator = ",">
+			#{item}
+		</foreach>
+		
+		 ORDER BY FEED_REGDATE DESC) F WHERE ROWNUM BETWEEN 1 AND #{count}
+	
+	</select>
+	
+	<!-- feed list - random  -->
+	<select id = "main_selectList_feed_random" resultMap="feedVo">
+		SELECT ROWNUM, F.* FROM (SELECT * FROM FEED ORDER BY FEED_REGDATE DESC) F WHERE ROWNUM BETWEEN 1 AND #{count}
+	</select>
+	
+	<!-- main_follow_feed -->
+	<select id = "main_follow_feed" resultMap="feedVo"  parameterType="java.util.Map">
+	
+		SELECT * FROM FEED WHERE ID IN
+	
+		<foreach item = "item" index = "index" collection = "fd_name" open = "(" close = ")" separator = ",">
+			#{item}
+		</foreach>
+	
+	</select>
+	
+	<!-- feed count - default -->
+	<select id = "feed_count" resultType="int">
+		SELECT COUNT(*) FROM FEED
+	</select>
+	
+	<!-- comment list -->
+	<select id = "select_comment" resultMap="commentVo">
+		SELECT * FROM COMMENTS WHERE COM_PNO = #{feedno} ORDER BY COM_REGDATE
+	</select>
+	
+	<!-- like list -->
+	<select id = "select_like" resultMap="likesVo">
+		SELECT * FROM LIKES WHERE FEED_NO = #{feedno}
+	</select>
+	
+	<!-- one feed -->
+	<select id = "each_feed" resultMap="feedVo">
+		SELECT * FROM FEED WHERE FEED_NO = #{feedno}
+	</select>
+	
+	<!-- Account -->
+	<select id = "select_account" resultType="accountVo">
+		SELECT * FROM ACCOUNT WHERE ID = #{id}
+	</select>
+	
+	<!-- PET -->
+	<select id = "select_pet_list" resultMap = "petVo">
+		SELECT * FROM PET WHERE ID = #{id}
+	</select>
+	
+	<!-- feed list - count x -->
+	<select id = "feed_list_nocount" resultMap="feedVo">
+		SELECT * FROM FEED WHERE ID = #{id}
+	</select>
+	
+	<!-- follow count -->
+	<select id = "follow_count" resultType="Int">
+		SELECT COUNT(*) FROM FOLLOW WHERE FR_ID = #{id}
+	</select>
+	
+	<!-- follower_count -->
+	<select id = "follower_count" resultType="Int">
+		SELECT COUNT(*) FROM FOLLOW WHERE FD_ID = #{id}
+	</select>
+	
+	<!-- insert_comment_ -->
+	<insert id = "insert_comment" parameterType="commentVo">
+		INSERT INTO COMMENTS VALUES(COM_SEQ.NEXTVAL, #{com_cate}, #{id}, #{com_content}, SYSDATE, #{com_pno})
+	</insert>
+	
+	<!-- delete_comment -->
+	<delete id = "delete_comment" parameterType="Int">
+		DELETE FROM COMMENTS WHERE COM_NO = #{comment_no}
+	</delete>
+	
+	<!-- update_comment -->
+	<update id = "update_comment" parameterType="commentVo">
+		UPDATE COMMENTS SET COM_CONTENT = #{com_content} WHERE COM_NO = #{com_no}
+	</update>
+	
+	<!-- feed_like_insert -->
+	<insert id = "feed_like_insert" parameterType="likesVo">
+		INSERT INTO LIKES VALUES(#{feed_no}, #{id})
+	</insert>
+	
+	<!-- feed_like_delete -->
+	<delete id = "feed_like_delete" parameterType="likesVo">
+		DELETE FROM LIKES WHERE FEED_NO = #{feed_no} AND ID = #{id}
+	</delete>
+	
+	<!-- find_id -->
+	<select id = "find_id" parameterType="String" resultType="accountVo">
+		SELECT * FROM ACCOUNT WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- find_vo -->
+	<select id = "find_vo" parameterType="accountVo" resultType="accountVo"> 
+		SELECT * FROM ACCOUNT WHERE EMAIL = #{email} AND ID = #{id}
+	</select>
+	
+	<!-- pwdfind_update -->
+	<update id = "pwdfind_update" parameterType="accountVo">
+		UPDATE ACCOUNT SET PASSWORD = #{password} WHERE ID = #{id}
+	</update>
+	
+	<!-- search_id -->
+	<select id = "search_id" parameterType="String" resultMap="feedVo">
+		SELECT * FROM FEED WHERE ID = #{keyword}
+	</select>
+	
+	<!-- search_id_count -->
+	<select id = "search_id_count" resultMap="feedVo">
+		SELECT ROWNUM, F.* FROM(SELECT * FROM FEED WHERE ID = #{keyword} ORDER BY FEED_REGDATE) F WHERE ROWNUM BETWEEN 1 AND #{count}
+	</select>
+	
+	<!-- search_ptag -->
+	<select id = "search_ptag" parameterType="String" resultMap="feedVo">
+		SELECT * FROM FEED WHERE FEED_PTAG LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<!-- search_ptag_count -->
+	<select id = "search_ptag_count" resultMap="feedVo">
+		SELECT ROWNUM, F.* FROM(SELECT * FROM FEED WHERE FEED_PTAG LIKE '%'||#{keyword}||'%' ORDER BY FEED_REGDATE) F WHERE ROWNUM BETWEEN 1 AND #{count}
+	</select>
+	
+	<!-- search_htag -->
+	<select id = "search_htag" parameterType="String" resultMap="feedVo">
+		SELECT * FROM FEED WHERE FEED_HTAG LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<!-- search_htag_count -->
+	<select id = "search_htag_count" resultMap="feedVo">
+		SELECT ROWNUM, F.* FROM(SELECT * FROM FEED WHERE FEED_HTAG LIKE '%'||#{keyword}||'%' ORDER BY FEED_REGDATE) F WHERE ROWNUM BETWEEN 1 AND #{count}
+	</select>
+	
+	<!-- pet_list -->
+	<select id = "pet_list" resultMap="petVo" parameterType="String">
+		SELECT * FROM PET WHERE ID = #{id}
+	</select>
+	
+	<!-- board_list -->
+	<select id = "select_board_list" parameterType="String" resultType="boardVo">
+		SELECT * FROM BOARD WHERE ID = #{id}
+	</select>
+
+	<!-- delete_user_chat -->
+	<delete id = "delete_user_chat" parameterType="String">
+		DELETE FROM CHAT WHERE S_ID = #{id} OR G_ID = #{id}
+	</delete>
+	
+	<!-- delete_user_follow -->
+	<delete id = "delete_user_follow" parameterType="String">
+		DELETE FROM FOLLOW WHERE FR_ID = #{id} OR FD_ID = #{id}
+	</delete>
+
+	<!-- delete_user_like -->
+	<delete id = "delete_user_like" parameterType="String">
+		DELETE FROM LIKES WHERE ID = #{id}
+	</delete>
+	
+	<!-- delete_user_comment -->
+	<delete id = "delete_user_comment" parameterType="String">
+		DELETE FROM COMMENTS WHERE ID = #{id}
+	</delete>
+	
+	<!-- delete_user_feed -->
+	<delete id = "delete_user_feed" parameterType="String">
+		DELETE FROM FEED WHERE ID = #{id}
+	</delete>
+	
+	<!-- delete_user_pet -->
+	<delete id = "delete_user_pet" parameterType="String">
+		DELETE FROM PET WHERE ID = #{id}
+	</delete>
+	
+	<!-- delete_user_account -->
+	<delete id = "delete_user_account" parameterType="String">
+		DELETE FROM ACCOUNT WHERE ID = #{id}
+	</delete>
+	
+	<!-- delete_user_board -->
+	<delete id = "delete_user_board" parameterType="String">
+		DELETE FROM BOARD WHERE ID = #{id}
+	</delete>
+	
+	<!-- detail_follow_insert -->
+	<insert id = "detail_follow_insert" parameterType="followVo">
+		INSERT INTO FOLLOW VALUES(#{fr_id}, #{fd_id})
+	</insert>
+	
+	<!-- follow_list_yn -->
+	<select id = "follow_list_yn" parameterType="followVo" resultType="followVo">
+		SELECT * FROM FOLLOW WHERE FR_ID = #{fr_id} AND FD_ID = #{fd_id}
+	</select>
+	
+	<!-- deatil_follow_delete -->
+	<delete id = "deatil_follow_delete" parameterType = "followVo">
+		DELETE FROM FOLLOW WHERE FR_ID = #{fr_id} AND FD_ID = #{fd_id}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

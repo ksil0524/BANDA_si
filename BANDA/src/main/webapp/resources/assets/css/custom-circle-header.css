@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 1680px) {
+
+	.iconBox {
+		font-size: 59px;
+	}
+	
+	#searchinput{
+		width: 336px;
+	}
+
+}
+
+@media screen and (max-width: 1280px) {
+
+	.iconBox {
+		font-size: 59px;
+	}
+	
+	#searchinput{
+		width: 336px;
+	}
+
+}
+
+@media screen and (max-width: 980px) {
+
+	.iconBox {
+		font-size: 59px;
+	}
+	
+	#searchinput{
+		width: 336px;
+	}
+	
+
+}
+
+@media screen and (max-width: 736px) {
+
+	.iconBox {
+		font-size: 30px;
+	}
+	
+	#searchBtn, #logOut{
+		font-size: 25px;
+	}
+	
+	.iconBox a:nth-child( n+1 ){
+		margin-left: 0px;
+	}
+	
+	.iconBox a:nth-child( n+2 ){
+		margin-left: 10px;
+	}
+	
+	#searchinput{
+		width: 244px;
+		margin-right: 5px;
+	}
+	
+	.closeBtn {
+		right: 21px;
+  			top: 33px;
+	}
+	
+	.closeBtn i{
+		font-size: 30px;
+	}
+	
+}
+
+@media screen and (max-width: 480px) {
+
+	.iconBox {
+		font-size: 30px;
+	}
+	
+	#searchBtn, #logOut{
+		font-size: 25px;
+	}
+	
+	.iconBox a:nth-child( n+1 ){
+		margin-left: 0px;
+	}
+	
+	.iconBox a:nth-child( n+2 ){
+		margin-left: 10px;
+	}
+	
+	#searchinput{
+		width: 244px;
+		margin-right: 5px;
+	}
+	
+	.closeBtn {
+		right: 21px;
+  			top: 33px;
+	}
+	
+	.closeBtn i{
+		font-size: 30px;
+	}
+}
+		
+
+#header{
+	background: rgba(88, 87, 87, 0.65);
+}
+
+#searchinput{
+	background: white;
+}
+
+/* 자동검색   @author 주희진*/
+#header.hide .inner, #header.preview .inner {
+	height: 6em !important;
+    width: 6em !important;
+    padding: 4em !important;
+}
+
+/* 자동검색   @author 주희진*/
+.ui-autocomplete {position:relative; cursor:default; z-index:999999 !important;}
+
+
+/* font */
+
+    /* font-family: 'BMHANNAAir' !important; */

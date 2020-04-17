@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SI-mapper">
+	<resultMap type="accountVo" id="accountVoMap">
+		<result property="id" column="ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+	</resultMap>
+	
+	<select id="acc_selectone" parameterType="String" resultMap="accountVoMap">
+		SELECT * FROM ACCOUNT WHERE ID = #{id}
+	</select>
+	
+	<select id="pet_selectlist" parameterType="String" resultType="petVo">
+		SELECT * FROM PET WHERE ID = #{id}
+	</select>
+	
+	<select id="feed_selectlist" parameterType="String" resultType="feedVo">
+		SELECT * FROM FEED WHERE ID = #{id}
+	</select>
+	
+	<select id="follow_selectlist" parameterType="String" resultType="followVo">
+		SELECT * FROM FOLLOW WHERE FR_ID = #{id} OR FD_ID = #{id}
+	</select>
+	
+	<select id="pet_selectOne" parameterType="int" resultType="petVo">
+		SELECT * FROM PET WHERE P_NO = #{p_no}
+	</select>
+	
+	<update id="pet_update" parameterType="petVo">
+		UPDATE PET SET 
+		CLASS_NO = #{class_no}, SPECIES_NO = #{species_no}, P_NAME = #{p_Name}, P_KIND = #{p_kind}, 
+		P_BIRTH = #{p_birth}, P_LIKE = #{p_like}, P_HATE = #{p_hate}, P_ABOUT = #{p_about} 
+		WHERE P_NO = #{p_no}
+	</update>
+	
+	<insert id="pet_insert" parameterType="petVo">
+		INSERT INTO PET VALUES(PET_SEQ.NEXTVAL, #{class_no}, #{species_no}, #{id}, #{p_Name}, #{p_kind}, #{p_birth}, #{p_character}, #{p_like}, #{p_hate}, #{p_about})
+	</insert>
+	
+	<select id="getLastPetSeq" resultType="_int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES  WHERE SEQUENCE_NAME = 'PET_SEQ'
+	</select>
+	
+	<update id="acc_update" parameterType="accountVo">
+		UPDATE ACCOUNT SET
+		PASSWORD = #{password}, EMAIL = #{email}, PHONE = #{phone}
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="fd_accountSelectList" parameterType="String" resultMap="accountVoMap">
+		SELECT ID, PASSWORD, EMAIL, PHONE 
+		FROM ACCOUNT
+		LEFT JOIN FOLLOW ON(ID = FR_ID)
+		WHERE FD_ID = #{fd_id}
+	</select>
+	
+	<select id="fr_accountSelectList" parameterType="String" resultMap="accountVoMap">
+		SELECT ID, PASSWORD, EMAIL, PHONE 
+		FROM ACCOUNT
+		LEFT JOIN FOLLOW ON(ID = FD_ID)
+		WHERE FR_ID = #{fr_id}
+	</select>
+	
+	<delete id="follow_unfollow" parameterType="followVo">
+		DELETE FROM FOLLOW WHERE FR_ID = #{fr_id} AND FD_ID = #{fd_id}
+	</delete>
+	
+	<insert id="follow_follow" parameterType="followVo">
+		INSERT INTO FOLLOW VALUES(#{fr_id}, #{fd_id})
+	</insert>
+	
+	<insert id="feed_insert" parameterType="feedVo">
+		INSERT INTO FEED VALUES(FEED_SEQ.NEXTVAL, #{id}, #{feed_content}, #{feed_ptag}, #{feed_hteg}, SYSDATE, #{feed_file})
+	</insert>
+	
+	<select id="getLastFeedSeq" resultType="_int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'FEED_SEQ'
+	</select>
+	
+	<delete id="comment_delete" parameterType="_int">
+		DELETE FROM COMMENTS WHERE COM_CATE = 'F' AND COM_PNO = #{feed_no}
+	</delete>
+	
+	<delete id="like_delete" parameterType="_int">
+		DELETE FROM LIKES WHERE FEED_NO = #{feed_no}
+	</delete>
+	
+	<delete id="feed_delete" parameterType="_int">
+		DELETE FROM FEED WHERE FEED_NO = #{feed_no}
+	</delete>
+	
+	<select id="chat_selectlist" parameterType="String" resultType="chatVo">
+		SELECT * FROM CHAT WHERE S_ID = #{id} OR G_ID = #{id} ORDER BY CHAT_REGDATE DESC
+	</select>
+	
+	<select id="mychat_selectonelist" parameterType="hashMap" resultType="chatVo">
+		SELECT * FROM CHAT WHERE (S_ID = #{userid} and G_ID = #{otherid}) OR (S_ID = #{otherid} and G_ID = #{userid}) ORDER BY CHAT_NO ASC
+	</select>
+	
+	<insert id="chat_insert" parameterType="chatVo">
+		INSERT INTO CHAT VALUES(CHAT_SEQ.NEXTVAL, #{s_id}, #{g_id}, #{chat_content}, 'N', SYSDATE)
+	</insert>
+	
+	<select id="select_allid" resultType="String">
+		SELECT ID FROM ACCOUNT ORDER BY ID ASC
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
