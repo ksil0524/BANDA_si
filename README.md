@@ -9,7 +9,8 @@
 ### < 개발 환경 >
 #### Language : JAVA / HTML5 / CSS(Bootstrap)/ JavaScript / jQuery
 #### DataBase : Oracle 11g with SqlDveloper
-#### IDE : Eclipse, Spring Tool SuiteServer : Aphache Tomcat 9.0, node js
+#### IDE : Eclipse, Spring Tool Suite
+#### Server : Aphache Tomcat 9.0, node js
 #### Communication Tool : Github, Slack
 #### OS : Chrome
 #
